@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: gateway
+
+security:
+  oauth2:
+    client:
+      registration:
+        gateway:
+          provider: uaa
+          client-id: gateway
+          client-secret: secret
+          authorization-grant-type: authorization_code
+          redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+          scope: openid,profile,email,resource.read
+      provider:
+        uaa:
+          authorization-uri: http://localhost:8090/uaa/oauth/authorize
+          token-uri: http://localhost:8090/uaa/oauth/token
+          user-info-uri: http://localhost:8090/uaa/userinfo
+          user-name-attribute: sub
+          jwk-set-uri: http://localhost:8090/uaa/token_keys

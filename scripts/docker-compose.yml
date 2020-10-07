@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+  postgres-compose:
+    image: postgres
+    container_name: postgre_api_db
+    environment:
+      POSTGRES_DB: "db_twitter"
+      POSTGRES_USER: "twitter"
+      POSTGRES_PASSWORD: "Postgres2019!"
+    expose:
+      - "5432"
+    networks:
+      - compose-network
+      
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: postgre_api_admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "gustavopomponi@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "gustavopomponi@gmail.com"
+    ports:
+      - "18543:80"
+    depends_on:
+      - postgres-compose
+    networks:
+      - compose-network
+
+  api-twitter-service:
+    image: scg-api-twitter-posts:latest
+    container_name: api-twitter-posts
+    depends_on:
+      - postgres-compose
+    environment:
+      PG_HOST: postgres-compose
+      PG_PORT: 5432
+      PG_USERNAME: twitter
+      PG_DATABASE: db_twitter
+      PG_PASSWORD: Postgres2019!
+    expose:
+      - "8083"
+    networks:
+      - compose-network
+
+  api-gateway:
+    image: scg-api-gateway:latest
+    container_name: api-gateway
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api-twitter-service
+      - uaa
+    networks:
+      - compose-network
+
+  uaa:
+    image: scg-uaa:latest
+    container_name: uaa
+    expose:
+      - "8090"
+    ports:
+      - "8090:8090"
+    networks:
+      - compose-network
+
+networks: 
+  compose-network:
+    driver: bridge

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api.gateway/apigateway.iml" filepath="$PROJECT_DIR$/api.gateway/apigateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api.registry/registry.iml" filepath="$PROJECT_DIR$/api.registry/registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api.twitter.posts/twitterposts.iml" filepath="$PROJECT_DIR$/api.twitter.posts/twitterposts.iml" />
+    </modules>
+  </component>
+</project>
