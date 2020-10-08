@@ -1,9 +1,10 @@
 package br.com.gustavopomponi.gateway;
 
 import br.com.gustavopomponi.gateway.config.UriConfiguration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -14,9 +15,12 @@ import reactor.core.publisher.Mono;
 
 @SpringBootApplication
 @RestController
-@EnableConfigurationProperties(UriConfiguration.class)
-@EnableEurekaClient
+@EnableDiscoveryClient
 public class GatewayApplication {
+
+
+	@Value("${api.twitter.host}")
+	private String httpUri;
 
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApplication.class, args);
@@ -28,9 +32,7 @@ public class GatewayApplication {
 	}
 
 	@Bean
-	public RouteLocator myRoutes(RouteLocatorBuilder builder, UriConfiguration uriConfiguration) {
-
-		String httpUri = uriConfiguration.gethttpUrl();
+	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 
 		return builder.routes()
 				.route(p -> p

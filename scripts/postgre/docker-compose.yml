@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  postgres-compose:
+    image: postgres
+    container_name: postgre_api_db
+    environment:
+      POSTGRES_DB: "db_twitter"
+      POSTGRES_USER: "twitter"
+      POSTGRES_PASSWORD: "Postgres2019!"
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
