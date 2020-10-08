@@ -12,8 +12,6 @@
     2. API para obtenção das informações do twitter e armazenamento no banco de dados.
     3. API gateway para segurança e controle de acesso à aplicação
     4. Arquitetura da Solução
-    5. Frontend em Angular para exibição das informações coletadas do twitter
-    6. ELK Stack para armazenamento de logs em Docker, utilizando base PostgreSQL
     
 <br>
     
@@ -33,9 +31,18 @@
 
 <br>
 
+7. Requisitos
+
+    1. Possuir o Docker instalado na maquina que irá rodar a aplicação
+    2. Possuir um app criado no Twitter Developer
+    3. Possuir um projeto no Portal do Desenvolvedor do Twitter
+    4. Possuir o Postman e/ou curl instalados para realizar as chamadas.
+    
+<br>
+
 4. Instruções de Instalação
 
-    1. Baixe o arquivo xxx para algum diretório de sua escolha
+    1. Baixe o arquivo scripts/docker-compose.yml para algum diretório de sua escolha
     2. Execute o comando docker-compose up -d
     
 <br>
@@ -53,6 +60,9 @@
             <td>
                 Método
             </td>
+            <td>
+                Parâmetro
+            </td>
         </tr>
         <tr>
             <td>
@@ -61,13 +71,15 @@
             <td>
                 GET
             </td>
+            <td>
+                hashtag
+            </td>
         </tr>
     </table>
 
-    1. Para fazer a chamada utilizando postman, 
+    1. Para fazer a chamada utilizando postman, selecione o método GET, entre com a URL http://localhost:8080, e passe como parâmetro "Query Param" na seção Params, a key "hashtag", e como value, alguma hashtag desejada. Ex: #fisica, #mundo, etc..
+    
+    2. Para fazer a chamada utilizando CURL
+    
+        curl "http://localhost:8080/tweets?hashtag=%23fisica"
 
-7. Requisitos
-
-    1. Possuir o Docker instalado na maquina que irá rodar a aplicação
-    2. Possuir um app criado no Twitter Developer
-    3. Possuir um projeto no Portal do Desenvolvedor do Twitter
