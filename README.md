@@ -29,25 +29,45 @@
     8. Swagger 2.9.2 - Documentação de API
     9. IntelliJ IDEA 2020.1.4 Community Edition - Desenvolvimento das API's
     10. Draw.IO (https://app.diagrams.net) - Confecção dos diagramas
+    11. Spring Social Twitter
 
+<br>
 
 4. Instruções de Instalação
 
     1. Baixe o arquivo xxx para algum diretório de sua escolha
     2. Execute o comando docker-compose up -d
-    3.
     
+<br>
+
 5. Chamadas da API
 
-    
+    <table>
+        <tr>
+            <td colspan="2">Endpoints</td>
+        </tr>
+        <tr>
+            <td>
+                Endpoint
+            </td>
+            <td>
+                Método
+            </td>
+        </tr>
+        <tr>
+            <td>
+                /tweets
+            </td>
+            <td>
+                GET
+            </td>
+        </tr>
+    </table>
 
-    
-6. Visualizar Logs da Aplicação
-
+    1. Para fazer a chamada utilizando postman, 
 
 7. Requisitos
 
     1. Possuir o Docker instalado na maquina que irá rodar a aplicação
     2. Possuir um app criado no Twitter Developer
     3. Possuir um projeto no Portal do Desenvolvedor do Twitter
-    4. Possuir Cloud Native Buildpacks instalado na máquina que irá rodar a aplicação
